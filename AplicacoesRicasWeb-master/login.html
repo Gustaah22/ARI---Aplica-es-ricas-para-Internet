@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-n-drop</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        #div1, #div2, #div3, #div4, #div5, #div6, #div7, #div8, #div9, #div10{
+            border: 1px solid black;
+            height: 70px;
+            width: 550px;
+            padding: 10px;
+            margin: 5px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+        }
+        img{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+
+        function drag(ev){
+            ev.dataTransfer.setData('text', ev.target.id);
+        }
+
+        
+        // const div = document.getElementById('div1');
+
+        // div.addEventListener('dragstart', drag)
+        function drop(ev){
+            ev.preventDefault();
+            let data = ev.dataTransfer.getData('text')
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+<body>
+    <p>Arraste a imagem para dentro do retângulo: </p>
+    <div class="container" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+    <br>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
+    <br><br>
+    <div class="container">
+        <div style="background-color: aqua; margin: 5px; ">
+            <div id="div7" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img id = 'drag1' src="placeholder-9.png" alt="" draggable="true" ondragstart="drag(event)"
+    width="250" height="70">
+            </div>
+            <div style="margin-top: 30px;" id="div8" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+            <div style="margin-top: 30px;" id="div9" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>     
+            <div style="margin-top: 30px;" id="div10" ondrop="drop(event)" ondragover="allowDrop(event)">   
+            </div>
+        </div>
+        <div  style="background-color: aqua; margin: 5px;">
+            <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+            <div style="margin-top: 30px;" id="div4" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>
+            <div style="margin-top: 30px;" id="div5" ondrop="drop(event)" ondragover="allowDrop(event)">
+            </div>     
+            <div style="margin-top: 30px;" id="div6" ondrop="drop(event)" ondragover="allowDrop(event)">   
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
